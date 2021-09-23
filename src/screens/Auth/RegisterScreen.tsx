@@ -26,7 +26,7 @@ const RegisterScreen = () => {
         <View style={styles.contentWrapper}>
           {/* Header */}
           <View style={styles.headerLogo}>
-            <Image source={Images.logoSm} style={styles.logo} />
+            <Image source={Images.logoSideText} style={styles.logo} />
           </View>
 
           {/* Form */}

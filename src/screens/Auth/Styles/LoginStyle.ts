@@ -20,7 +20,7 @@ const styles = createStyles({
     marginBottom: '40rem',
   },
   logo: {
-    width: '110rem',
+    width: '190rem',
     height: '110rem',
     resizeMode: 'contain',
   },

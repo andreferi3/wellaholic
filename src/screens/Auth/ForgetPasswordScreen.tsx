@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {View, SafeAreaView} from 'react-native';
 import CHeader from '../../components/CHeader';
 
@@ -8,9 +8,11 @@ import FormForgotPassword from '../../layout/Forms/FormForgotPassword';
 
 // * Styles & Assets
 import styles from './Styles/LoginStyle';
-import NavigationServices from '../../routes/NavigationServices';
+import {UserContext} from '../../context/UserContext';
 
 const ForgetPasswordScreen = () => {
+  const {loading, forgetPassword} = useContext(UserContext);
+
   return (
     <SafeAreaView style={styles.wrapper}>
       <CHeader />
@@ -18,7 +20,8 @@ const ForgetPasswordScreen = () => {
       <KeyboardAwareScrollView style={styles.contentScrollView}>
         <View style={styles.contentWrapper}>
           <FormForgotPassword
-            onSubmit={() => NavigationServices.navigate('EmailSent')}
+            onSubmit={values => forgetPassword(values)}
+            isLoading={loading}
           />
         </View>
       </KeyboardAwareScrollView>

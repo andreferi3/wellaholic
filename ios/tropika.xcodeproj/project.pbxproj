@@ -8,16 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* tropikaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* tropikaTests.m */; };
-		0E471DC7339687C846298730 /* libPods-tropika.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CD867A71A692704570EE4241 /* libPods-tropika.a */; };
+		0EFFF3433CC15446D56A6C9E /* libPods-tropika.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DF265AA3B3457BEB1B92460 /* libPods-tropika.a */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		27518E03D1E94A45916A3CB3 /* IBMPlexSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A0FC48495B944423BFFDDB26 /* IBMPlexSans-Bold.ttf */; };
 		61BFF099166247AC9378E4D0 /* IBMPlexSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1756AA51978A4A5D835B78D2 /* IBMPlexSans-SemiBold.ttf */; };
+		6B5B35DB82BB8FD486E7093B /* libPods-tropika-tropikaTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 05D37EA79983D4AFA7A7BD29 /* libPods-tropika-tropikaTests.a */; };
 		6E1C693122DB4973A14AACE8 /* IBMPlexSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F7A373B956D740CFA8EB2EB0 /* IBMPlexSans-Regular.ttf */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		DF5502DB35954995A357C080 /* IBMPlexSans-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9F88D5A954E04419B55B31A9 /* IBMPlexSans-Medium.ttf */; };
-		F8D6C963CB3BAF9D20DDD871 /* libPods-tropika-tropikaTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 63760FC52185A984F8DAC714 /* libPods-tropika-tropikaTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +34,7 @@
 		00E356EE1AD99517003FC87E /* tropikaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = tropikaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* tropikaTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = tropikaTests.m; sourceTree = "<group>"; };
+		05D37EA79983D4AFA7A7BD29 /* libPods-tropika-tropikaTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-tropika-tropikaTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07F961A680F5B00A75B9A /* tropika.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tropika.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = tropika/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = tropika/AppDelegate.m; sourceTree = "<group>"; };
@@ -44,30 +45,29 @@
 		2D0B6BD17DAF479ABF0EC4AB /* FontAwesome5_Brands.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Brands.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Brands.ttf"; sourceTree = "<group>"; };
 		344C7F7544B94D3C9C76D7F7 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = SimpleLineIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; };
 		36AFE2D5C0E2415A9ADBEDE9 /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialCommunityIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
+		37A7EEB46F0D25EB692AA56E /* Pods-tropika-tropikaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tropika-tropikaTests.debug.xcconfig"; path = "Target Support Files/Pods-tropika-tropikaTests/Pods-tropika-tropikaTests.debug.xcconfig"; sourceTree = "<group>"; };
 		3E438C9E0C21420390532944 /* FontAwesome5_Solid.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Solid.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Solid.ttf"; sourceTree = "<group>"; };
-		456312C5C43B14EF9048786A /* Pods-tropika-tropikaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tropika-tropikaTests.debug.xcconfig"; path = "Target Support Files/Pods-tropika-tropikaTests/Pods-tropika-tropikaTests.debug.xcconfig"; sourceTree = "<group>"; };
 		461E4DE823754E3DBF2A9A49 /* FontAwesome.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
 		4D6416F535474454987BC30D /* AntDesign.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = AntDesign.ttf; path = "../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf"; sourceTree = "<group>"; };
-		63760FC52185A984F8DAC714 /* libPods-tropika-tropikaTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-tropika-tropikaTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5AB6D20993DA336B724303A0 /* Pods-tropika.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tropika.debug.xcconfig"; path = "Target Support Files/Pods-tropika/Pods-tropika.debug.xcconfig"; sourceTree = "<group>"; };
 		69B3A55E10E94DDE8D626D83 /* Entypo.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Entypo.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Entypo.ttf"; sourceTree = "<group>"; };
-		6C0886C2FE7CE805BDB16FCD /* Pods-tropika.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tropika.debug.xcconfig"; path = "Target Support Files/Pods-tropika/Pods-tropika.debug.xcconfig"; sourceTree = "<group>"; };
+		6A1CE8E154D2B0E7EA9BD88D /* Pods-tropika.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tropika.release.xcconfig"; path = "Target Support Files/Pods-tropika/Pods-tropika.release.xcconfig"; sourceTree = "<group>"; };
+		6DF265AA3B3457BEB1B92460 /* libPods-tropika.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-tropika.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		72EE5CA9FCC8403B90118274 /* EvilIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = EvilIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
 		7C50B1EB49F54EB1B7FC6A9E /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = tropika/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9296F6E2F3AE4605BEB04BFF /* Zocial.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Zocial.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
 		98EF5DB67D65486BABF3B334 /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
-		9975DFB3086788A24E533B3F /* Pods-tropika-tropikaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tropika-tropikaTests.release.xcconfig"; path = "Target Support Files/Pods-tropika-tropikaTests/Pods-tropika-tropikaTests.release.xcconfig"; sourceTree = "<group>"; };
 		9F4CB7170CC44228A89F13BE /* FontAwesome5_Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Regular.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Regular.ttf"; sourceTree = "<group>"; };
 		9F88D5A954E04419B55B31A9 /* IBMPlexSans-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "IBMPlexSans-Medium.ttf"; path = "../src/assets/fonts/IBMPlexSans-Medium.ttf"; sourceTree = "<group>"; };
 		A0FC48495B944423BFFDDB26 /* IBMPlexSans-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "IBMPlexSans-Bold.ttf"; path = "../src/assets/fonts/IBMPlexSans-Bold.ttf"; sourceTree = "<group>"; };
 		C860206E0F8C40FC9EE57AD6 /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
 		C8D6350E1AE94B78A531745C /* Feather.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Feather.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Feather.ttf"; sourceTree = "<group>"; };
-		CD867A71A692704570EE4241 /* libPods-tropika.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-tropika.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD3A51D0F586499A911C4CB6 /* Foundation.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Foundation.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Foundation.ttf"; sourceTree = "<group>"; };
-		E09ED766AA32EB41636F5E2C /* Pods-tropika.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tropika.release.xcconfig"; path = "Target Support Files/Pods-tropika/Pods-tropika.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		F38E68C238FF458AB4BBA013 /* Fontisto.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Fontisto.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Fontisto.ttf"; sourceTree = "<group>"; };
 		F7A373B956D740CFA8EB2EB0 /* IBMPlexSans-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "IBMPlexSans-Regular.ttf"; path = "../src/assets/fonts/IBMPlexSans-Regular.ttf"; sourceTree = "<group>"; };
+		F94F953C3C2B53E81E380DA5 /* Pods-tropika-tropikaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tropika-tropikaTests.release.xcconfig"; path = "Target Support Files/Pods-tropika-tropikaTests/Pods-tropika-tropikaTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,7 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F8D6C963CB3BAF9D20DDD871 /* libPods-tropika-tropikaTests.a in Frameworks */,
+				6B5B35DB82BB8FD486E7093B /* libPods-tropika-tropikaTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,7 +83,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0E471DC7339687C846298730 /* libPods-tropika.a in Frameworks */,
+				0EFFF3433CC15446D56A6C9E /* libPods-tropika.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -123,10 +123,10 @@
 		232B02EA7E4CF146C9FF91FA /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				6C0886C2FE7CE805BDB16FCD /* Pods-tropika.debug.xcconfig */,
-				E09ED766AA32EB41636F5E2C /* Pods-tropika.release.xcconfig */,
-				456312C5C43B14EF9048786A /* Pods-tropika-tropikaTests.debug.xcconfig */,
-				9975DFB3086788A24E533B3F /* Pods-tropika-tropikaTests.release.xcconfig */,
+				5AB6D20993DA336B724303A0 /* Pods-tropika.debug.xcconfig */,
+				6A1CE8E154D2B0E7EA9BD88D /* Pods-tropika.release.xcconfig */,
+				37A7EEB46F0D25EB692AA56E /* Pods-tropika-tropikaTests.debug.xcconfig */,
+				F94F953C3C2B53E81E380DA5 /* Pods-tropika-tropikaTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -135,8 +135,8 @@
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				CD867A71A692704570EE4241 /* libPods-tropika.a */,
-				63760FC52185A984F8DAC714 /* libPods-tropika-tropikaTests.a */,
+				6DF265AA3B3457BEB1B92460 /* libPods-tropika.a */,
+				05D37EA79983D4AFA7A7BD29 /* libPods-tropika-tropikaTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -207,12 +207,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "tropikaTests" */;
 			buildPhases = (
-				B2314BABE7F28C389EC89EFD /* [CP] Check Pods Manifest.lock */,
+				A824238FFD75B89EF1CC07DC /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
-				71CF16E0C9D8BFC278621A2E /* [CP] Embed Pods Frameworks */,
-				9FD0B3EF09B9C2073DAC815E /* [CP] Copy Pods Resources */,
+				1AA85578971086369CC02F75 /* [CP] Embed Pods Frameworks */,
+				E16C9B7E596BF433B9B05F60 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -228,14 +228,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "tropika" */;
 			buildPhases = (
-				25AADF0FDA14A06286742C3F /* [CP] Check Pods Manifest.lock */,
+				C25E26DE2C6A621BC81008A3 /* [CP] Check Pods Manifest.lock */,
 				FD10A7F022414F080027D42C /* Start Packager */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				B5453FED505B086742D32DAC /* [CP] Embed Pods Frameworks */,
-				AAED883E030EB7DFFC6E39E3 /* [CP] Copy Pods Resources */,
+				B5FF0E770748D711B11907ED /* [CP] Embed Pods Frameworks */,
+				C18FDC8780914A76A8A4A88E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -320,29 +320,7 @@
 			shellPath = /bin/sh;
 			shellScript = "set -e\n\nexport NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh\n";
 		};
-		25AADF0FDA14A06286742C3F /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-tropika-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		71CF16E0C9D8BFC278621A2E /* [CP] Embed Pods Frameworks */ = {
+		1AA85578971086369CC02F75 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -359,41 +337,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-tropika-tropikaTests/Pods-tropika-tropikaTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		9FD0B3EF09B9C2073DAC815E /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-tropika-tropikaTests/Pods-tropika-tropikaTests-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-tropika-tropikaTests/Pods-tropika-tropikaTests-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-tropika-tropikaTests/Pods-tropika-tropikaTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		AAED883E030EB7DFFC6E39E3 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-tropika/Pods-tropika-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-tropika/Pods-tropika-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-tropika/Pods-tropika-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		B2314BABE7F28C389EC89EFD /* [CP] Check Pods Manifest.lock */ = {
+		A824238FFD75B89EF1CC07DC /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -415,7 +359,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		B5453FED505B086742D32DAC /* [CP] Embed Pods Frameworks */ = {
+		B5FF0E770748D711B11907ED /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -430,6 +374,62 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-tropika/Pods-tropika-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C18FDC8780914A76A8A4A88E /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-tropika/Pods-tropika-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-tropika/Pods-tropika-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-tropika/Pods-tropika-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C25E26DE2C6A621BC81008A3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-tropika-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E16C9B7E596BF433B9B05F60 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-tropika-tropikaTests/Pods-tropika-tropikaTests-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-tropika-tropikaTests/Pods-tropika-tropikaTests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-tropika-tropikaTests/Pods-tropika-tropikaTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FD10A7F022414F080027D42C /* Start Packager */ = {
@@ -484,7 +484,7 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 456312C5C43B14EF9048786A /* Pods-tropika-tropikaTests.debug.xcconfig */;
+			baseConfigurationReference = 37A7EEB46F0D25EB692AA56E /* Pods-tropika-tropikaTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -511,7 +511,7 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9975DFB3086788A24E533B3F /* Pods-tropika-tropikaTests.release.xcconfig */;
+			baseConfigurationReference = F94F953C3C2B53E81E380DA5 /* Pods-tropika-tropikaTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
@@ -535,7 +535,7 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6C0886C2FE7CE805BDB16FCD /* Pods-tropika.debug.xcconfig */;
+			baseConfigurationReference = 5AB6D20993DA336B724303A0 /* Pods-tropika.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -562,7 +562,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E09ED766AA32EB41636F5E2C /* Pods-tropika.release.xcconfig */;
+			baseConfigurationReference = 6A1CE8E154D2B0E7EA9BD88D /* Pods-tropika.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;

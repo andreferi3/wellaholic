@@ -23,4 +23,11 @@ export const onBoardData: IOnBoardData[] = [
       'There is so many merchants across many key\ncategories of beauty, wellness and fitness',
     image: Images.discount2,
   },
+  {
+    _id: '3',
+    title: 'Earn up to 5% Cashback',
+    description:
+      'For every purchase, you earn cashback points which\nyou can redeem for your next purchase.',
+    image: Images.discount3,
+  },
 ];

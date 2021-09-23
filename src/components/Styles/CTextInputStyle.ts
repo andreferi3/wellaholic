@@ -1,11 +1,12 @@
 import {Colors, Fonts} from '../../assets/themes';
+import {iOS} from '../../public/helper/GlobalHelper';
 import {createStyles} from '../../styles';
 
 const styles = createStyles({
   textInput: {
     borderWidth: 1,
     borderColor: '#E0E0E0',
-    padding: '14rem',
+    padding: iOS ? '14rem' : '14rem',
     borderRadius: '8rem',
     fontFamily: Fonts.regular,
     fontSize: '14rem',

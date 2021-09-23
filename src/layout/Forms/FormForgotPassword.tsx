@@ -17,6 +17,7 @@ import {isError} from '../../public/helper/GlobalHelper';
 
 interface FormForgotPasswordProps {
   onSubmit: (values: any) => {} | void;
+  isLoading: boolean;
 }
 
 const FormForgotPassword = (props: FormForgotPasswordProps) => {
@@ -43,7 +44,7 @@ const FormForgotPassword = (props: FormForgotPasswordProps) => {
           size={EStyleSheet.value('13.5rem')}
           color={Colors.$black}
           style={[GlobalStyles.mt15]}>
-          {`Enter your username or email, You will receive a link to create a new password via email.`}
+          {`Enter your username or email. You will receive an\nemail with a link to create a new password.`}
         </CText>
       </View>
 
@@ -57,7 +58,10 @@ const FormForgotPassword = (props: FormForgotPasswordProps) => {
         error={isError(formik, 'email')}
       />
 
-      <CButton onPress={formik.handleSubmit} disabled={isValid}>
+      <CButton
+        onPress={formik.handleSubmit}
+        disabled={isValid}
+        isLoading={props.isLoading}>
         Send
       </CButton>
     </View>

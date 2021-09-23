@@ -6,6 +6,7 @@ import {
   ViewStyle,
   TextInput,
   TouchableOpacity,
+  TextStyle,
 } from 'react-native';
 
 // * Component
@@ -24,6 +25,7 @@ interface IProps extends TextInputProps {
   containerStyle?: StyleProp<ViewStyle>;
   isPassword?: boolean;
   isLoading?: boolean;
+  inputStyle?: StyleProp<TextStyle>;
 }
 
 const CTextInput = (props: IProps) => {
@@ -41,16 +43,10 @@ const CTextInput = (props: IProps) => {
       <View>
         <TextInput
           {...props}
+          selectTextOnFocus
           editable={props.isLoading}
           secureTextEntry={props.isPassword && hide}
-          style={[
-            styles.textInput,
-            {
-              paddingRight: EStyleSheet.value(
-                props.isPassword ? '35rem' : '14rem',
-              ),
-            },
-          ]}
+          style={[props.inputStyle, styles.textInput]}
         />
         {props.isPassword && (
           <View style={styles.rightIcon}>

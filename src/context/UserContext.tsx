@@ -1,7 +1,10 @@
 import AsyncStorage from '@react-native-community/async-storage';
 import React, {createContext, ReactNode, useState} from 'react';
 import {userServices} from '../public/services';
-import {LoginPayload} from '../public/services/models/UserModels';
+import {
+  ForgetPasswordPayload,
+  LoginPayload,
+} from '../public/services/models/UserModels';
 import NavigationServices from '../routes/NavigationServices';
 
 interface UserContextProps {
@@ -12,6 +15,7 @@ interface UserContextValue {
   user: any;
   loading: boolean;
   userLogin: (payload: LoginPayload) => {} | void;
+  forgetPassword: (payload: ForgetPasswordPayload) => {} | void;
 }
 
 export const UserContext = createContext<UserContextValue>({} as any);
@@ -31,7 +35,20 @@ const UserContextProvider = (props: UserContextProps) => {
       NavigationServices.replace('Main');
     } else {
       setLoading(false);
-      console.log('gagal login : ', response.data);
+      console.log('error : ', JSON.stringify(response.data));
+    }
+  };
+
+  const forgetPassword = async (payload: ForgetPasswordPayload) => {
+    setLoading(true);
+    const response = await userServices.forgetPassword(payload);
+
+    if (response.ok) {
+      setLoading(false);
+      NavigationServices.navigate('EmailSent');
+    } else {
+      setLoading(false);
+      console.log('gagal sent email : ', response.data);
     }
   };
 
@@ -41,6 +58,7 @@ const UserContextProvider = (props: UserContextProps) => {
         user,
         loading,
         userLogin,
+        forgetPassword,
       }}>
       {props.children}
     </UserContext.Provider>

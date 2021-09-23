@@ -1,8 +1,8 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react-native/no-inline-styles */
 import AsyncStorage from '@react-native-community/async-storage';
 import React, {useEffect, useRef, useState} from 'react';
 import {
-  ScrollView,
   View,
   RefreshControl,
   ActivityIndicator,
@@ -21,8 +21,17 @@ import {Colors, Images} from '../assets/themes';
 import {createStyles} from '../styles';
 import CButton from '../components/CButton';
 import RNRestart from 'react-native-restart';
+import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
+import NavigationServices from '../routes/NavigationServices';
+import {userServices} from '../public/services';
 
 const INJECTED_JS = `
+  const meta = document.createElement('meta'); 
+  meta.setAttribute('content', 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'); 
+  meta.setAttribute('name', 'viewport');
+  document.getElementsByTagName('head')[0].appendChild(meta);
+  ale
+
   window.onscroll = function() {
     window.ReactNativeWebView.postMessage(
       JSON.stringify({
@@ -35,15 +44,17 @@ const INJECTED_JS = `
 let backPressed = 0;
 
 const Home = () => {
-  const [webUrl, setWebUrl] = useState('https://tropika.on-dev.info/#');
+  const [webUrl, setWebUrl] = useState('https://tropika.on-dev.info');
   const [isPullToRefreshEnabled, setIsPullToRefreshEnabled] =
     useState<boolean>(false);
   const [scrollViewHeight, setScrollViewHeight] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
   const [token, setToken] = useState<string | null>();
   const [loading, setLoading] = useState(true);
+  const [isFirstTime, setIsFirstTime] = useState(true);
+  const [htmlSource, setHtmlSource] = useState('');
 
-  const [isConnected, setIsConnected] = useState<boolean | null>();
+  const [isConnected, setIsConnected] = useState<boolean | null>(true);
 
   let _webViewRef: any = useRef();
 
@@ -57,6 +68,25 @@ const Home = () => {
       setIsConnected(state.isConnected);
     });
 
+    if (webUrl.indexOf('my-account') > -1) {
+      if (isFirstTime) {
+        fetchInitialize();
+      }
+    }
+
+    if (webUrl.indexOf('?rest_route=/simple-jwt-login/v1/autologin&JWT') > -1) {
+      setIsFirstTime(false);
+      setWebUrl('https://tropika.on-dev.info/#');
+    }
+
+    if (webUrl.indexOf('customer-logout') > -1) {
+      setTimeout(async () => {
+        await AsyncStorage.clear();
+      });
+
+      return NavigationServices.replace('Auth');
+    }
+
     return () => {
       unsubscribe();
     };
@@ -65,20 +95,30 @@ const Home = () => {
   const fetchInitialize = async () => {
     setLoading(true);
 
-    await AsyncStorage.getItem('BEARER_TOKEN')
-      .then(value => {
-        setToken(value);
-        setLoading(false);
-      })
-      .catch(() => {
-        setLoading(false);
-      });
+    await AsyncStorage.getItem('BEARER_TOKEN').then(value => setToken(value));
+
+    if (isFirstTime) {
+      const response = await userServices.autoLogin({jwt: String(token)});
+
+      if (response.ok) {
+        setHtmlSource(response.data);
+        setWebUrl('');
+      } else {
+        console.log('error : ', response.data);
+      }
+    } else {
+      setWebUrl('https://tropika.on-dev.info/#');
+    }
+
+    return setLoading(false);
   };
 
   const onRefresh = () => _webViewRef.current.reload();
 
   const onWebViewMessage = (e: any) => {
     const {data} = e.nativeEvent;
+
+    console.log(data);
 
     try {
       const {scrollTop} = JSON.parse(data);
@@ -105,7 +145,7 @@ const Home = () => {
   if (!isConnected) {
     return (
       <SafeAreaView style={[GlobalStyles.flexFill, GlobalStyles.bgWhite]}>
-        <ScrollView>
+        <KeyboardAwareScrollView bounces={false}>
           <View style={[GlobalStyles.alignCenter, GlobalStyles.mt5]}>
             <Image source={Images.noData} style={styles.noInetImg} />
 
@@ -130,7 +170,7 @@ const Home = () => {
               </CButton>
             </View>
           </View>
-        </ScrollView>
+        </KeyboardAwareScrollView>
       </SafeAreaView>
     );
   }
@@ -142,7 +182,7 @@ const Home = () => {
           <ActivityIndicator size="large" />
         </View>
       ) : (
-        <ScrollView
+        <KeyboardAwareScrollView
           onLayout={e => setScrollViewHeight(e.nativeEvent.layout.height)}
           style={styles.scrollView}
           refreshControl={
@@ -156,13 +196,24 @@ const Home = () => {
             />
           }>
           <WebView
+            cacheEnabled
+            enableApplePay
+            sharedCookiesEnabled
+            thirdPartyCookiesEnabled
+            cacheMode="LOAD_DEFAULT"
             ref={_webViewRef}
-            source={{
-              uri: webUrl,
-              headers: {
-                Authorization: `Bearer ${token}`,
-              },
-            }}
+            source={
+              htmlSource && isFirstTime
+                ? {
+                    html: htmlSource,
+                  }
+                : {
+                    uri: webUrl,
+                    headers: {
+                      Authorization: `Bearer ${token}`,
+                    },
+                  }
+            }
             style={{webHeight: '100%', height: scrollViewHeight}}
             onMessage={onWebViewMessage}
             onLoadStart={(event: WebViewNavigationEvent) => {
@@ -174,7 +225,7 @@ const Home = () => {
             javaScriptEnabled={true}
             domStorageEnabled={true}
           />
-        </ScrollView>
+        </KeyboardAwareScrollView>
       )}
       {isLoading && (
         <View style={styles.loader}>

@@ -1,15 +1,16 @@
 import {width} from '../../public/helper/GlobalHelper';
 import {createStyles} from '../../styles';
+import {isIPhoneWithMonobrow} from '../../public/helper/GetStatusBarHeight';
 
 const styles = createStyles({
   headerLogo: {
     position: 'absolute',
-    left: '16rem',
     top: '20rem',
+    left: '16rem',
   },
   logoImg: {
-    width: '167rem',
-    height: '36rem',
+    width: '140rem',
+    height: '40rem',
     resizeMode: 'contain',
   },
   carouselContainer: {
@@ -17,8 +18,8 @@ const styles = createStyles({
     height: '100%',
   },
   imageOnBoarding: {
-    width: `${width - 10}rem`,
-    height: `${width - 10}rem`,
+    width: `${width - 50}rem`,
+    height: `${width - 50}rem`,
     resizeMode: 'contain',
   },
   onBoardingItem: {
@@ -28,6 +29,7 @@ const styles = createStyles({
   },
   carouselFooter: {
     paddingHorizontal: '16rem',
+    marginBottom: isIPhoneWithMonobrow() ? 0 : '30rem',
   },
 });
 
