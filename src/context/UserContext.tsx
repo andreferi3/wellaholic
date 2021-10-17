@@ -31,8 +31,19 @@ const UserContextProvider = (props: UserContextProps) => {
     if (response.ok) {
       setUser(response.data);
       await AsyncStorage.setItem('BEARER_TOKEN', response.data.data.jwt);
-      setLoading(false);
-      NavigationServices.replace('Main');
+      const autoLoginResponse = await userServices.autoLogin({
+        jwt: response.data.data.jwt as string,
+      });
+
+      if (autoLoginResponse.ok) {
+        setLoading(false);
+        NavigationServices.replace('Main', {
+          url: 'https://tropika.on-dev.info/#',
+          token: response.data.data.jwt,
+        });
+      } else {
+        setLoading(false);
+      }
     } else {
       setLoading(false);
       console.log('error : ', JSON.stringify(response.data));

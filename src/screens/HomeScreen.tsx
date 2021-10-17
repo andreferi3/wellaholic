@@ -1,65 +1,63 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable react-native/no-inline-styles */
-import AsyncStorage from '@react-native-community/async-storage';
 import React, {useEffect, useRef, useState} from 'react';
 import {
   View,
+  Image,
+  BackHandler,
+  ToastAndroid,
   RefreshControl,
   ActivityIndicator,
-  ToastAndroid,
-  BackHandler,
   SafeAreaView,
-  Image,
 } from 'react-native';
+import {RouteProp, useRoute} from '@react-navigation/core';
+
+// * Components
+import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import WebView from 'react-native-webview';
-import {WebViewNavigationEvent} from 'react-native-webview/lib/WebViewTypes';
+import CButton from '../components/CButton';
+import CText from '../components/CText';
+import {RootStackRoutesProps} from '../routes';
+import RNRestart from 'react-native-restart';
 import NetInfo from '@react-native-community/netinfo';
 
+// * Styles & Assets
 import GlobalStyles from '../public/styles/GlobalStyles';
-import CText from '../components/CText';
-import {Colors, Images} from '../assets/themes';
 import {createStyles} from '../styles';
-import CButton from '../components/CButton';
-import RNRestart from 'react-native-restart';
-import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
+import {Colors, Images} from '../assets/themes';
+import AsyncStorage from '@react-native-community/async-storage';
+import {iOS} from '../public/helper/GlobalHelper';
 import NavigationServices from '../routes/NavigationServices';
-import {userServices} from '../public/services';
 
 const INJECTED_JS = `
-  const meta = document.createElement('meta'); 
-  meta.setAttribute('content', 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'); 
+  const meta = document.createElement('meta');
+  meta.setAttribute('content', 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0');
   meta.setAttribute('name', 'viewport');
   document.getElementsByTagName('head')[0].appendChild(meta);
-  ale
 
   window.onscroll = function() {
     window.ReactNativeWebView.postMessage(
       JSON.stringify({
         scrollTop: document.documentElement.scrollTop || document.body.scrollTop
-      }),     
+      }),
     )
   }
 `;
 
 let backPressed = 0;
 
-const Home = () => {
-  const [webUrl, setWebUrl] = useState('https://tropika.on-dev.info');
+const HomeScreen = () => {
+  const route = useRoute<RouteProp<RootStackRoutesProps, 'Main'>>();
+  let _webViewRef: any = useRef();
+
+  const [isConnected, setIsConnected] = useState<boolean | null>(true);
+  const [webUrl, setWebUrl] = useState<string>('');
   const [isPullToRefreshEnabled, setIsPullToRefreshEnabled] =
     useState<boolean>(false);
   const [scrollViewHeight, setScrollViewHeight] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
-  const [token, setToken] = useState<string | null>();
-  const [loading, setLoading] = useState(true);
-  const [isFirstTime, setIsFirstTime] = useState(true);
-  const [htmlSource, setHtmlSource] = useState('');
 
-  const [isConnected, setIsConnected] = useState<boolean | null>(true);
-
-  let _webViewRef: any = useRef();
+  const {url, token} = route.params;
 
   useEffect(() => {
-    fetchInitialize();
     BackHandler.addEventListener('hardwareBackPress', () => handleBackButton());
   }, []);
 
@@ -67,17 +65,6 @@ const Home = () => {
     const unsubscribe = NetInfo.addEventListener(state => {
       setIsConnected(state.isConnected);
     });
-
-    if (webUrl.indexOf('my-account') > -1) {
-      if (isFirstTime) {
-        fetchInitialize();
-      }
-    }
-
-    if (webUrl.indexOf('?rest_route=/simple-jwt-login/v1/autologin&JWT') > -1) {
-      setIsFirstTime(false);
-      setWebUrl('https://tropika.on-dev.info/#');
-    }
 
     if (webUrl.indexOf('customer-logout') > -1) {
       setTimeout(async () => {
@@ -92,42 +79,6 @@ const Home = () => {
     };
   }, [webUrl]);
 
-  const fetchInitialize = async () => {
-    setLoading(true);
-
-    await AsyncStorage.getItem('BEARER_TOKEN').then(value => setToken(value));
-
-    if (isFirstTime) {
-      const response = await userServices.autoLogin({jwt: String(token)});
-
-      if (response.ok) {
-        setHtmlSource(response.data);
-        setWebUrl('');
-      } else {
-        console.log('error : ', response.data);
-      }
-    } else {
-      setWebUrl('https://tropika.on-dev.info/#');
-    }
-
-    return setLoading(false);
-  };
-
-  const onRefresh = () => _webViewRef.current.reload();
-
-  const onWebViewMessage = (e: any) => {
-    const {data} = e.nativeEvent;
-
-    console.log(data);
-
-    try {
-      const {scrollTop} = JSON.parse(data);
-      setIsPullToRefreshEnabled(scrollTop === 0);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   const handleBackButton = () => {
     if (backPressed > 0) {
       BackHandler.exitApp();
@@ -139,6 +90,19 @@ const Home = () => {
         backPressed = 0;
       }, 3000);
       return true;
+    }
+  };
+
+  const onRefresh = () => _webViewRef.current.reload();
+
+  const onWebViewMessage = (e: any) => {
+    const {data} = e.nativeEvent;
+
+    try {
+      const {scrollTop} = JSON.parse(data);
+      setIsPullToRefreshEnabled(scrollTop === 0);
+    } catch (error) {
+      console.log(error);
     }
   };
 
@@ -176,58 +140,54 @@ const Home = () => {
   }
 
   return (
-    <SafeAreaView style={[styles.scrollView, {backgroundColor: 'white'}]}>
-      {loading ? (
-        <View style={[GlobalStyles.contentContainerCenter]}>
-          <ActivityIndicator size="large" />
-        </View>
-      ) : (
-        <KeyboardAwareScrollView
-          onLayout={e => setScrollViewHeight(e.nativeEvent.layout.height)}
-          style={styles.scrollView}
-          refreshControl={
-            <RefreshControl
-              refreshing={false}
-              enabled={isPullToRefreshEnabled}
-              onRefresh={onRefresh}
-              tintColor="transparent"
-              colors={['transparent']}
-              style={{backgroundColor: 'transparent'}}
-            />
-          }>
-          <WebView
-            cacheEnabled
-            enableApplePay
-            sharedCookiesEnabled
-            thirdPartyCookiesEnabled
-            cacheMode="LOAD_DEFAULT"
-            ref={_webViewRef}
-            source={
-              htmlSource && isFirstTime
-                ? {
-                    html: htmlSource,
-                  }
-                : {
-                    uri: webUrl,
-                    headers: {
-                      Authorization: `Bearer ${token}`,
-                    },
-                  }
-            }
-            style={{webHeight: '100%', height: scrollViewHeight}}
-            onMessage={onWebViewMessage}
-            onLoadStart={(event: WebViewNavigationEvent) => {
-              setIsLoading(true);
-              setWebUrl(event.nativeEvent.url);
-            }}
-            onLoad={() => setIsLoading(false)}
-            injectedJavaScript={INJECTED_JS}
-            javaScriptEnabled={true}
-            domStorageEnabled={true}
+    <SafeAreaView style={[styles.scrollView, GlobalStyles.bgWhite]}>
+      <KeyboardAwareScrollView
+        onLayout={e => setScrollViewHeight(e.nativeEvent.layout.height)}
+        style={styles.scrollView}
+        refreshControl={
+          <RefreshControl
+            refreshing={false}
+            enabled={isPullToRefreshEnabled}
+            onRefresh={onRefresh}
+            tintColor="transparent"
+            colors={['transparent']}
+            style={{backgroundColor: 'transparent'}}
           />
-        </KeyboardAwareScrollView>
-      )}
-      {isLoading && (
+        }>
+        <WebView
+          sharedCookiesEnabled
+          thirdPartyCookiesEnabled
+          domStorageEnabled
+          cacheEnabled
+          javaScriptEnabled
+          ref={_webViewRef}
+          onMessage={onWebViewMessage}
+          injectedJavaScript={INJECTED_JS}
+          source={{
+            uri: url,
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }}
+          onLoadStart={e => {
+            console.log(e.nativeEvent.url);
+            setWebUrl(e.nativeEvent.url);
+            setIsLoading(true);
+
+            if (!e.nativeEvent.loading) {
+              if (e.nativeEvent.url !== url) {
+                return NavigationServices.replace('Main2', {
+                  url: e.nativeEvent.url,
+                  token,
+                });
+              }
+            }
+          }}
+          onLoad={() => setIsLoading(false)}
+          style={{height: scrollViewHeight, webHeight: '100%'}}
+        />
+      </KeyboardAwareScrollView>
+      {isLoading && !iOS && (
         <View style={styles.loader}>
           <ActivityIndicator size="large" color="red" style={styles.loading} />
         </View>
@@ -273,4 +233,4 @@ const styles = createStyles({
   },
 });
 
-export default Home;
+export default HomeScreen;

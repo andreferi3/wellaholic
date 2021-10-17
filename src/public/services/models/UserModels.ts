@@ -10,3 +10,9 @@ export interface AutoLoginPayload {
 export interface ForgetPasswordPayload {
   email: string;
 }
+
+export interface RegisterPayload {
+  email: string;
+  password: string;
+  dob: string;
+}

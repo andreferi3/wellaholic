@@ -3,6 +3,7 @@ import {
   LoginPayload,
   AutoLoginPayload,
   ForgetPasswordPayload,
+  RegisterPayload,
 } from './models/UserModels';
 
 interface IOkResponse {
@@ -62,4 +63,13 @@ export const forgetPassword = (payload: ForgetPasswordPayload) => {
     .catch(err => {
       return failResponse(err);
     });
+};
+
+export const register = (payload: RegisterPayload) => {
+  return axios
+    .post(
+      `?rest_route=/simple-jwt-login/v1/users&email=${payload.email}&password=${payload.password}&AUTH_KEY=THISISMySpeCiaLAUthCode&dob=${payload.dob}`,
+    )
+    .then(res => okResponse(res))
+    .catch(err => failResponse(err));
 };

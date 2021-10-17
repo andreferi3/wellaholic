@@ -41,7 +41,6 @@ const FormLogin = (props: FormLoginProps) => {
         containerStyle={[GlobalStyles.mb3]}
         label="Email"
         placeholder="Input your email"
-        keyboardType="email-address"
         autoCapitalize="none"
         onChangeText={formik.handleChange('email')}
         error={isError(formik, 'email')}

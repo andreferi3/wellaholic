@@ -3,8 +3,6 @@ import {createStackNavigator} from '@react-navigation/stack';
 import {NavigationContainer} from '@react-navigation/native';
 import {navigationRef} from './NavigationServices';
 
-const Stack = createStackNavigator();
-
 // * Bunch list of Screen
 import HomeScreen from '../screens/HomeScreen';
 import OnBoardingScreen from '../screens/Auth/OnBoardingScreen';
@@ -13,30 +11,51 @@ import RegisterScreen from '../screens/Auth/RegisterScreen';
 import ForgetPasswordScreen from '../screens/Auth/ForgetPasswordScreen';
 import EmailSentScreen from '../screens/Auth/EmailSentScreen';
 import LoadingScreen from '../screens/LoadingScreen';
+import TestScreen from '../screens/HomeScreen2';
 
-const AuthStack = () => {
+export type RootStackRoutesProps = {
+  AuthLoading: undefined;
+  Main: {
+    url: string;
+    token: string;
+  };
+  Main2: {
+    url: string;
+    token: string;
+  };
+  Auth: undefined;
+};
+
+const MainStack = createStackNavigator<RootStackRoutesProps>();
+const AuthStack = createStackNavigator();
+
+const AuthStackRoutes = () => {
   return (
-    <Stack.Navigator screenOptions={{headerShown: false}}>
-      <Stack.Screen name="OnBoarding" component={OnBoardingScreen} />
-      <Stack.Screen name="Login" component={LoginScreen} />
-      <Stack.Screen name="Register" component={RegisterScreen} />
-      <Stack.Screen name="ForgotPassword" component={ForgetPasswordScreen} />
-      <Stack.Screen name="EmailSent" component={EmailSentScreen} />
-    </Stack.Navigator>
+    <AuthStack.Navigator screenOptions={{headerShown: false}}>
+      <AuthStack.Screen name="OnBoarding" component={OnBoardingScreen} />
+      <AuthStack.Screen name="Login" component={LoginScreen} />
+      <AuthStack.Screen name="Register" component={RegisterScreen} />
+      <AuthStack.Screen
+        name="ForgotPassword"
+        component={ForgetPasswordScreen}
+      />
+      <AuthStack.Screen name="EmailSent" component={EmailSentScreen} />
+    </AuthStack.Navigator>
   );
 };
 
 const Routes = () => {
   return (
-    <Stack.Navigator
+    <MainStack.Navigator
       screenOptions={{
         headerShown: false,
       }}
       initialRouteName="AuthLoading">
-      <Stack.Screen name="AuthLoading" component={LoadingScreen} />
-      <Stack.Screen name="Main" component={HomeScreen} />
-      <Stack.Screen name="Auth" component={AuthStack} />
-    </Stack.Navigator>
+      <MainStack.Screen name="AuthLoading" component={LoadingScreen} />
+      <MainStack.Screen name="Auth" component={AuthStackRoutes} />
+      <MainStack.Screen name="Main" component={HomeScreen} />
+      <MainStack.Screen name="Main2" component={TestScreen} />
+    </MainStack.Navigator>
   );
 };
 

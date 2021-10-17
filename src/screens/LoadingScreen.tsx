@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import {View, ActivityIndicator} from 'react-native';
 import {Colors} from '../assets/themes';
 import CText from '../components/CText';
@@ -6,32 +6,30 @@ import AsyncStorage from '@react-native-community/async-storage';
 
 import GlobalStyles from '../public/styles/GlobalStyles';
 import NavigationServices from '../routes/NavigationServices';
+import {userServices} from '../public/services';
 
 const LoadingScreen = () => {
-  const [token, setToken] = useState<string | null>();
-  const [, setLoading] = useState(true);
-
-  useEffect(() => {
-    if (token) {
-      return NavigationServices.replace('Main');
-    } else {
-      return NavigationServices.replace('Auth');
-    }
-  }, [token]);
-
   useEffect(() => {
     fetchInitialize();
   }, []);
 
   const fetchInitialize = async () => {
-    await AsyncStorage.getItem('BEARER_TOKEN')
-      .then(value => {
-        setLoading(false);
-        setToken(value);
-      })
-      .catch(() => {
-        setLoading(false);
-      });
+    const jwt = await AsyncStorage.getItem('BEARER_TOKEN');
+
+    if (jwt !== null) {
+      const response = await userServices.autoLogin({jwt});
+
+      console.log(response);
+
+      if (response.ok) {
+        return NavigationServices.replace('Main', {
+          url: 'https://tropika.on-dev.info/#',
+          token: jwt,
+        });
+      }
+    } else {
+      return NavigationServices.replace('Auth');
+    }
   };
 
   return (

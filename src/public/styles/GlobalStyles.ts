@@ -619,6 +619,9 @@ const GlobalStyles = createStyles({
   fw500: {
     fontWeight: '500',
   },
+  h100: {
+    height: '100%',
+  },
 });
 
 export default GlobalStyles;

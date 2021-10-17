@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {
   View,
   TextInputProps,
@@ -29,7 +29,15 @@ interface IProps extends TextInputProps {
 }
 
 const CTextInput = (props: IProps) => {
+  const _inputRef = useRef<any>();
+
   const [hide, setHide] = useState(true);
+
+  useEffect(() => {
+    _inputRef.current?.setNativeProps({
+      style: GlobalStyles.ibmRegular14,
+    });
+  }, [props.isPassword, hide]);
 
   return (
     <View style={props.containerStyle}>
@@ -43,6 +51,7 @@ const CTextInput = (props: IProps) => {
       <View>
         <TextInput
           {...props}
+          ref={_inputRef}
           selectTextOnFocus
           editable={props.isLoading}
           secureTextEntry={props.isPassword && hide}
