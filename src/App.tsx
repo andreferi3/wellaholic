@@ -4,6 +4,7 @@ import AppContainer from './routes';
 
 // * Components
 import SplashScreen from 'react-native-splash-screen';
+import FlashMessage from 'react-native-flash-message';
 
 // * Context
 import UserContextProvider from './context/UserContext';
@@ -18,6 +19,7 @@ const App = () => {
   return (
     <UserContextProvider>
       <AppContainer />
+      <FlashMessage position="top" />
     </UserContextProvider>
   );
 };

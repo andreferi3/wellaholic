@@ -68,7 +68,7 @@ export const forgetPassword = (payload: ForgetPasswordPayload) => {
 export const register = (payload: RegisterPayload) => {
   return axios
     .post(
-      `?rest_route=/simple-jwt-login/v1/users&email=${payload.email}&password=${payload.password}&AUTH_KEY=THISISMySpeCiaLAUthCode&dob=${payload.dob}`,
+      `?rest_route=/simple-jwt-login/v1/users&email=${payload.email}&password=${payload.password}&AUTH_KEY=THISISMySpeCiaLAUthCode&user_meta={"yith_birthday": ${payload.user_meta.yith_birthday}}`,
     )
     .then(res => okResponse(res))
     .catch(err => failResponse(err));

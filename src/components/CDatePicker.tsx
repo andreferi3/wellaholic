@@ -25,6 +25,7 @@ interface IProps extends TextInputProps {
   selectedDate: (date: Date) => {} | void;
   error?: string | boolean;
   containerStyle?: StyleProp<ViewStyle>;
+  isLoading?: boolean;
 }
 
 const today = new Date();
@@ -43,7 +44,10 @@ const CDatePicker = (props: IProps) => {
         {props.label}
       </CText>
 
-      <TouchableOpacity onPress={() => setOpen(true)} activeOpacity={1}>
+      <TouchableOpacity
+        disabled={props.isLoading}
+        onPress={() => setOpen(true)}
+        activeOpacity={1}>
         <TextInput
           {...props}
           value={selectedDate && moment(date).format('DD/MM/YYYY')}

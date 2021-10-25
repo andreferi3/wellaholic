@@ -10,7 +10,6 @@ import CDatePicker from '../../components/CDatePicker';
 
 // * Styles & Assets
 import GlobalStyles from '../../public/styles/GlobalStyles';
-import {Colors} from '../../assets/themes';
 import colors from '../../assets/themes/colors';
 import EStyleSheet from 'react-native-extended-stylesheet';
 
@@ -20,10 +19,18 @@ import {isError} from '../../public/helper/GlobalHelper';
 
 export interface FormRegisterProps {
   onSubmit: (values: any) => {} | void;
+  isLoading: boolean;
 }
+
+export type TInitialValues = {
+  email: string;
+  password: string;
+  dob?: string;
+};
 
 const initialValues = {
   email: '',
+  password: '',
   dob: '',
 };
 
@@ -48,6 +55,17 @@ const FormRegister = (props: FormRegisterProps) => {
         autoCapitalize="none"
         onChangeText={formik.handleChange('email')}
         error={isError(formik, 'email')}
+        isLoading={!props.isLoading}
+      />
+
+      <CTextInput
+        isPassword
+        label="Password"
+        placeholder="Input your password"
+        onChangeText={formik.handleChange('password')}
+        error={isError(formik, 'password')}
+        containerStyle={[GlobalStyles.mb3]}
+        isLoading={!props.isLoading}
       />
 
       <CDatePicker
@@ -55,13 +73,15 @@ const FormRegister = (props: FormRegisterProps) => {
         placeholder="DD/MM/YYYY"
         selectedDate={date => formik.setFieldValue('dob', date)}
         error={isError(formik, 'dob')}
+        isLoading={props.isLoading}
       />
 
       <View style={[GlobalStyles.mt2, GlobalStyles.mb4]}>
-        <CText color={Colors.$midGrey}>Password will send to your email.</CText>
+        {/* <CText color={Colors.$midGrey}>Password will send to your email.</CText> */}
       </View>
 
       <CButton
+        isLoading={props.isLoading}
         onPress={formik.handleSubmit}
         disabled={isValid}
         btnStyle={[GlobalStyles.mb2]}>

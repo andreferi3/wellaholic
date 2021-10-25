@@ -1,9 +1,11 @@
 import AsyncStorage from '@react-native-community/async-storage';
 import React, {createContext, ReactNode, useState} from 'react';
+import {showMessage} from 'react-native-flash-message';
 import {userServices} from '../public/services';
 import {
   ForgetPasswordPayload,
   LoginPayload,
+  RegisterPayload,
 } from '../public/services/models/UserModels';
 import NavigationServices from '../routes/NavigationServices';
 
@@ -15,6 +17,7 @@ interface UserContextValue {
   user: any;
   loading: boolean;
   userLogin: (payload: LoginPayload) => {} | void;
+  userRegister: (payload: RegisterPayload) => {} | void;
   forgetPassword: (payload: ForgetPasswordPayload) => {} | void;
 }
 
@@ -46,8 +49,47 @@ const UserContextProvider = (props: UserContextProps) => {
       }
     } else {
       setLoading(false);
-      console.log('error : ', JSON.stringify(response.data));
+      if (response.data.response.data.data.message) {
+        showMessage({
+          message: response.data.response.data.data.message,
+          type: 'danger',
+        });
+      } else {
+        showMessage({
+          message: `Unidentified Error : ${response.data.response.status}`,
+          type: 'danger',
+        });
+      }
     }
+  };
+
+  const userRegister = async (payload: RegisterPayload) => {
+    setLoading(true);
+
+    const response = await userServices.register(payload);
+
+    if (response.ok) {
+      console.log(response.data);
+      showMessage({
+        message: response.data.message,
+        type: 'success',
+      });
+      NavigationServices.goBack();
+    } else {
+      if (response.data.response.data.data.message) {
+        showMessage({
+          message: response.data.response.data.data.message,
+          type: 'danger',
+        });
+      } else {
+        showMessage({
+          message: `Unidentified Error : ${response.data.response.status}`,
+          type: 'danger',
+        });
+      }
+    }
+
+    return setLoading(false);
   };
 
   const forgetPassword = async (payload: ForgetPasswordPayload) => {
@@ -69,6 +111,7 @@ const UserContextProvider = (props: UserContextProps) => {
         user,
         loading,
         userLogin,
+        userRegister,
         forgetPassword,
       }}>
       {props.children}

@@ -14,5 +14,5 @@ export interface ForgetPasswordPayload {
 export interface RegisterPayload {
   email: string;
   password: string;
-  dob: string;
+  user_meta: {yith_birthday: string};
 }
