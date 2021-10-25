@@ -13,8 +13,12 @@ import {Colors, Images} from '../../assets/themes';
 import CText from '../../components/CText';
 import EStyleSheet from 'react-native-extended-stylesheet';
 import CButton from '../../components/CButton';
+import {RouteProp, useRoute} from '@react-navigation/core';
+import {AuthStackRoutesProps} from '../../routes';
 
 const EmailSentScreen = () => {
+  const route = useRoute<RouteProp<AuthStackRoutesProps, 'EmailSent'>>();
+
   return (
     <SafeAreaView style={styles.wrapper}>
       <CHeader />
@@ -26,6 +30,7 @@ const EmailSentScreen = () => {
           <View style={[GlobalStyles.mb5]}>
             <CText
               bold
+              center
               color={Colors.$black}
               size={EStyleSheet.value('20rem')}
               style={[GlobalStyles.mb3]}>
@@ -35,9 +40,9 @@ const EmailSentScreen = () => {
               center
               style={[GlobalStyles.lnHeightMd]}
               size={EStyleSheet.value('14.5rem')}>
-              We have sent reset password link to ridwan@maven.com. it may take
-              several minutes to show up on your inbox. please wait at least 10
-              minutes before attemping another reset
+              We have sent reset password link to {route.params.email ?? '-'}.
+              it may take several minutes to show up on your inbox. please wait
+              at least 10 minutes before attemping another reset
             </CText>
           </View>
 

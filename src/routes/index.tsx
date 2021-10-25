@@ -26,6 +26,16 @@ export type RootStackRoutesProps = {
   Auth: undefined;
 };
 
+export type AuthStackRoutesProps = {
+  OnBoarding: undefined;
+  Login: undefined;
+  Register: undefined;
+  ForgotPassword: undefined;
+  EmailSent: {
+    email: string;
+  };
+};
+
 const MainStack = createStackNavigator<RootStackRoutesProps>();
 const AuthStack = createStackNavigator();
 

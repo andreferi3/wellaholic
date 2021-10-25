@@ -98,7 +98,9 @@ const UserContextProvider = (props: UserContextProps) => {
 
     if (response.ok) {
       setLoading(false);
-      NavigationServices.navigate('EmailSent');
+      NavigationServices.navigate('EmailSent', {
+        email: payload.email,
+      });
     } else {
       setLoading(false);
       console.log('gagal sent email : ', response.data);
