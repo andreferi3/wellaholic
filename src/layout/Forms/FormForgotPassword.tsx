@@ -13,7 +13,6 @@ import {FormForgotPasswordSchema} from '../../public/constants/FormSchema';
 import GlobalStyles from '../../public/styles/GlobalStyles';
 import {Colors} from '../../assets/themes';
 import EStyleSheet from 'react-native-extended-stylesheet';
-import {isError} from '../../public/helper/GlobalHelper';
 
 interface FormForgotPasswordProps {
   onSubmit: (values: any) => {} | void;
@@ -55,7 +54,7 @@ const FormForgotPassword = (props: FormForgotPasswordProps) => {
         keyboardType="email-address"
         autoCapitalize="none"
         onChangeText={formik.handleChange('email')}
-        error={isError(formik, 'email')}
+        error={formik.errors.email}
       />
 
       <CButton

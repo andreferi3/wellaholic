@@ -43,15 +43,12 @@ const FormRegister = (props: FormRegisterProps) => {
     },
   });
 
-  const isValid = !formik.isValid || formik.submitCount > 2 || !formik.dirty;
-
   return (
     <View>
       <CTextInput
         containerStyle={[GlobalStyles.mb3]}
         label="Email"
         placeholder="Input your email"
-        keyboardType="email-address"
         autoCapitalize="none"
         onChangeText={formik.handleChange('email')}
         error={isError(formik, 'email')}
@@ -83,7 +80,6 @@ const FormRegister = (props: FormRegisterProps) => {
       <CButton
         isLoading={props.isLoading}
         onPress={formik.handleSubmit}
-        disabled={isValid}
         btnStyle={[GlobalStyles.mb2]}>
         Register
       </CButton>

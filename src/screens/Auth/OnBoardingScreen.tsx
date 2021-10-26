@@ -1,7 +1,8 @@
 import AsyncStorage from '@react-native-community/async-storage';
 import React from 'react';
-import {SafeAreaView} from 'react-native';
+import {View} from 'react-native';
 import CarouselComponent from '../../layout/Carousel';
+import {getStatusBarHeight} from '../../public/helper/GetStatusBarHeight';
 import GlobalStyles from '../../public/styles/GlobalStyles';
 import NavigationServices from '../../routes/NavigationServices';
 
@@ -12,9 +13,17 @@ const OnBoardingScreen = () => {
   };
 
   return (
-    <SafeAreaView style={GlobalStyles.bgWhite}>
-      <CarouselComponent onStartPress={ToLoginScreen} />
-    </SafeAreaView>
+    <View style={[GlobalStyles.bgWhite]}>
+      <View
+        style={[
+          {
+            marginTop: getStatusBarHeight(true),
+            marginBottom: getStatusBarHeight(true),
+          },
+        ]}>
+        <CarouselComponent onStartPress={ToLoginScreen} />
+      </View>
+    </View>
   );
 };
 

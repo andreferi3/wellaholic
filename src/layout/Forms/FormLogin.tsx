@@ -1,4 +1,5 @@
-import React from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, {useCallback} from 'react';
 import {View} from 'react-native';
 
 // * Components
@@ -11,8 +12,9 @@ import GlobalStyles from '../../public/styles/GlobalStyles';
 
 // * Helper
 import {FormLoginSchema} from '../../public/constants/FormSchema';
-import {isError} from '../../public/helper/GlobalHelper';
 import NavigationServices from '../../routes/NavigationServices';
+import {isError} from '../../public/helper/GlobalHelper';
+import {useFocusEffect} from '@react-navigation/core';
 
 export interface FormLoginProps {
   onSubmit: (values: any) => {} | void;
@@ -28,12 +30,20 @@ const FormLogin = (props: FormLoginProps) => {
   const formik = useFormik({
     initialValues,
     validationSchema: FormLoginSchema,
+    validateOnBlur: true,
+    validateOnChange: true,
     onSubmit: values => {
       props.onSubmit(values);
     },
   });
 
-  const isValid = !formik.isValid || formik.submitCount > 2 || !formik.dirty;
+  useFocusEffect(
+    useCallback(() => {
+      const unsubscribe = formik.resetForm();
+
+      return () => unsubscribe;
+    }, []),
+  );
 
   return (
     <View>
@@ -43,6 +53,7 @@ const FormLogin = (props: FormLoginProps) => {
         placeholder="Input your email"
         autoCapitalize="none"
         onChangeText={formik.handleChange('email')}
+        onBlur={() => formik.validateField('email')}
         error={isError(formik, 'email')}
         isLoading={!props.isLoading}
       />
@@ -65,10 +76,7 @@ const FormLogin = (props: FormLoginProps) => {
         </CButton>
       </View>
 
-      <CButton
-        isLoading={props.isLoading}
-        onPress={formik.handleSubmit}
-        disabled={isValid}>
+      <CButton isLoading={props.isLoading} onPress={formik.handleSubmit}>
         Login
       </CButton>
     </View>
