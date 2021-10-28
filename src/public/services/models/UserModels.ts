@@ -16,3 +16,9 @@ export interface RegisterPayload {
   password: string;
   user_meta: {yith_birthday: string};
 }
+
+export interface ChangePasswordPayload {
+  email: string;
+  new_password: string;
+  code: string;
+}

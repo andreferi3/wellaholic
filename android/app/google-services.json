@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "171937294185",
+    "project_id": "wellaholic-5ac4f",
+    "storage_bucket": "wellaholic-5ac4f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:171937294185:android:1f1cd90784a20b5e633ff8",
+        "android_client_info": {
+          "package_name": "com.tropika"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "171937294185-9146thsi0mcgvpfmstjfer4adtnlrapc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.tropika",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "171937294185-cgd4fh61t0lg6tbeh9kv7sdlmjmmrau2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBqGGqgF9FWr_eBRkQk_xzSbwRlcpsI1VM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "171937294185-cgd4fh61t0lg6tbeh9kv7sdlmjmmrau2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

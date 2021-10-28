@@ -37,7 +37,7 @@ const CTextInput = (props: IProps) => {
     _inputRef.current?.setNativeProps({
       style: GlobalStyles.ibmRegular14,
     });
-  }, [props.isPassword, hide]);
+  }, [props.isPassword]);
 
   return (
     <View style={props.containerStyle}>

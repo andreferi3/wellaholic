@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.tropika",
+      "sha256_cert_fingerprints": [
+        "23:78:F5:5A:D9:A6:E5:00:32:47:61:43:78:C7:23:59:AE:D2:A3:4A:50:13:E3:FF:2A:E4:26:21:03:6E:32:96"
+      ]
+    }
+  }
+]

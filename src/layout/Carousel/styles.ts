@@ -19,7 +19,7 @@ const styles = createStyles({
   },
   imageOnBoarding: {
     width: `${width - 50}rem`,
-    height: `${width - 50}rem`,
+    height: '300rem',
     resizeMode: 'contain',
   },
   onBoardingItem: {

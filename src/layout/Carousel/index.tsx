@@ -70,7 +70,7 @@ const CarouselComponent: FC<IProps> = ({onStartPress}) => {
         <Animated.View
           style={[GlobalStyles.flexRowCenter, {opacity: _btnOpacity}]}>
           <View style={[GlobalStyles.flexFill]}>
-            <CButton bold onPress={onStartPress}>
+            <CButton bold disabled={currIndex < 2} onPress={onStartPress}>
               Get Started
             </CButton>
           </View>

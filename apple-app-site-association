@@ -1,0 +1,15 @@
+{
+   "applinks": {
+       "apps": [],
+       "details": [
+           {
+               "appID": "com.tropika",
+               "paths": [ "/change-password/", "/change-password/*"]
+           },
+           {
+               "appID": "com.tropika",
+               "paths": [ "*" ]
+           }
+       ]
+   }
+}

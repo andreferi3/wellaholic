@@ -12,9 +12,14 @@ import ForgetPasswordScreen from '../screens/Auth/ForgetPasswordScreen';
 import EmailSentScreen from '../screens/Auth/EmailSentScreen';
 import LoadingScreen from '../screens/LoadingScreen';
 import TestScreen from '../screens/HomeScreen2';
+import ChangePasswordScreen from '../screens/Auth/ChangePasswordScreen';
 
 export type RootStackRoutesProps = {
   AuthLoading: undefined;
+  ChangePassword: {
+    email: string;
+    code: string;
+  };
   Main: {
     url: string;
     token: string;
@@ -62,6 +67,10 @@ const Routes = () => {
       }}
       initialRouteName="AuthLoading">
       <MainStack.Screen name="AuthLoading" component={LoadingScreen} />
+      <MainStack.Screen
+        name="ChangePassword"
+        component={ChangePasswordScreen}
+      />
       <MainStack.Screen name="Auth" component={AuthStackRoutes} />
       <MainStack.Screen name="Main" component={HomeScreen} />
       <MainStack.Screen name="Main2" component={TestScreen} />
@@ -69,9 +78,25 @@ const Routes = () => {
   );
 };
 
+const config = {
+  screens: {
+    ChangePassword: {
+      path: 'change-password/:params',
+      parse: {
+        params: (params: string) => `${params}`,
+      },
+    },
+  },
+};
+
+const linking = {
+  prefixes: ['https://tropika.on-dev.info/', 'tropika://change-password'],
+  config,
+};
+
 const AppContainer = () => {
   return (
-    <NavigationContainer ref={navigationRef}>
+    <NavigationContainer linking={linking} ref={navigationRef}>
       <Routes />
     </NavigationContainer>
   );

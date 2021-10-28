@@ -3,6 +3,7 @@ import React, {createContext, ReactNode, useState} from 'react';
 import {showMessage} from 'react-native-flash-message';
 import {userServices} from '../public/services';
 import {
+  ChangePasswordPayload,
   ForgetPasswordPayload,
   LoginPayload,
   RegisterPayload,
@@ -19,6 +20,7 @@ interface UserContextValue {
   userLogin: (payload: LoginPayload) => {} | void;
   userRegister: (payload: RegisterPayload) => {} | void;
   forgetPassword: (payload: ForgetPasswordPayload) => {} | void;
+  changePassword: (payload: ChangePasswordPayload) => {} | void;
 }
 
 export const UserContext = createContext<UserContextValue>({} as any);
@@ -107,6 +109,33 @@ const UserContextProvider = (props: UserContextProps) => {
     }
   };
 
+  const changePassword = async (payload: ChangePasswordPayload) => {
+    setLoading(true);
+    const response = await userServices.changePassword(payload);
+
+    if (response.ok) {
+      showMessage({
+        message:
+          'Your password has been reseted. Please login back with your new password',
+        type: 'success',
+      });
+    } else {
+      if (response.data.response.data.data.message) {
+        showMessage({
+          message: response.data.response.data.data.message,
+          type: 'danger',
+        });
+      } else {
+        showMessage({
+          message: `Unidentified Error : ${response.data.response.status}`,
+          type: 'danger',
+        });
+      }
+    }
+
+    return setLoading(false);
+  };
+
   return (
     <UserContext.Provider
       value={{
@@ -115,6 +144,7 @@ const UserContextProvider = (props: UserContextProps) => {
         userLogin,
         userRegister,
         forgetPassword,
+        changePassword,
       }}>
       {props.children}
     </UserContext.Provider>

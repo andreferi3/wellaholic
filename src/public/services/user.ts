@@ -4,6 +4,7 @@ import {
   AutoLoginPayload,
   ForgetPasswordPayload,
   RegisterPayload,
+  ChangePasswordPayload,
 } from './models/UserModels';
 
 interface IOkResponse {
@@ -26,6 +27,11 @@ const failResponse = (err: any): IFailResponse => ({
   data: err,
 });
 
+/**
+ * @type POST
+ * @param {LoginPayload} payload
+ * @returns
+ */
 export const login = (payload: LoginPayload) => {
   return axios
     .post(
@@ -39,6 +45,25 @@ export const login = (payload: LoginPayload) => {
     });
 };
 
+/**
+ * @type POST
+ * @param {RegisterPayload} payload
+ * @returns
+ */
+export const register = (payload: RegisterPayload) => {
+  return axios
+    .post(
+      `?rest_route=/simple-jwt-login/v1/users&email=${payload.email}&password=${payload.password}&AUTH_KEY=THISISMySpeCiaLAUthCode&user_meta={"yith_birthday": ${payload.user_meta.yith_birthday}}`,
+    )
+    .then(res => okResponse(res))
+    .catch(err => failResponse(err));
+};
+
+/**
+ * @type GET
+ * @param {AutoLoginPayload} payload
+ * @returns
+ */
 export const autoLogin = (payload: AutoLoginPayload) => {
   return axios
     .get(
@@ -52,6 +77,11 @@ export const autoLogin = (payload: AutoLoginPayload) => {
     });
 };
 
+/**
+ * @type POST
+ * @param {ForgetPasswordPayload} payload
+ * @returns
+ */
 export const forgetPassword = (payload: ForgetPasswordPayload) => {
   return axios
     .post(
@@ -65,10 +95,15 @@ export const forgetPassword = (payload: ForgetPasswordPayload) => {
     });
 };
 
-export const register = (payload: RegisterPayload) => {
+/**
+ * @type POST
+ * @param {ChangePasswordPayload} payload
+ * @returns
+ */
+export const changePassword = (payload: ChangePasswordPayload) => {
   return axios
     .post(
-      `?rest_route=/simple-jwt-login/v1/users&email=${payload.email}&password=${payload.password}&AUTH_KEY=THISISMySpeCiaLAUthCode&user_meta={"yith_birthday": ${payload.user_meta.yith_birthday}}`,
+      `?rest_route=/simple-jwt-login/v1/user/reset_password&email=${payload.email}&code=${payload.code}&new_password=${payload.new_password}&AUTH_KEY=THISISMySpeCiaLAUthCode`,
     )
     .then(res => okResponse(res))
     .catch(err => failResponse(err));

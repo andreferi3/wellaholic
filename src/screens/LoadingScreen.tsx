@@ -3,6 +3,7 @@ import {View, ActivityIndicator} from 'react-native';
 import {Colors} from '../assets/themes';
 import CText from '../components/CText';
 import AsyncStorage from '@react-native-community/async-storage';
+import dynamicLinks from '@react-native-firebase/dynamic-links';
 
 import GlobalStyles from '../public/styles/GlobalStyles';
 import NavigationServices from '../routes/NavigationServices';
@@ -16,10 +17,24 @@ const LoadingScreen = () => {
   const fetchInitialize = async () => {
     const jwt = await AsyncStorage.getItem('BEARER_TOKEN');
 
+    const dynamicLink = await dynamicLinks().getInitialLink();
+
+    if (dynamicLink?.url) {
+      if (dynamicLink.utmParameters?.utm_campaign === 'change-password') {
+        if (dynamicLink.utmParameters?.utm_source) {
+          const source = dynamicLink.utmParameters.utm_source.split('&');
+          console.log(source);
+
+          return NavigationServices.navigate('ChangePassword', {
+            email: source[0],
+            code: source[1],
+          });
+        }
+      }
+    }
+
     if (jwt !== null) {
       const response = await userServices.autoLogin({jwt});
-
-      console.log(response);
 
       if (response.ok) {
         return NavigationServices.replace('Main', {
