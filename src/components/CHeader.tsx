@@ -11,10 +11,18 @@ import {Colors} from '../assets/themes';
 interface IProps {
   title?: string;
   rightButton?: string;
+  customLeft?: boolean;
   onRightButtonPress?: () => {} | void;
+  onLeftButtonPress?: () => {} | void;
 }
 
-const CHeader = ({title, rightButton, onRightButtonPress}: IProps) => {
+const CHeader = ({
+  title,
+  rightButton,
+  customLeft,
+  onRightButtonPress,
+  onLeftButtonPress,
+}: IProps) => {
   return (
     <View style={styles.header}>
       <View
@@ -24,7 +32,13 @@ const CHeader = ({title, rightButton, onRightButtonPress}: IProps) => {
           GlobalStyles.justifyContentCenter,
         ]}>
         <TouchableOpacity
-          onPress={() => NavigationServices.goBack()}
+          onPress={() => {
+            if (customLeft && onLeftButtonPress) {
+              return onLeftButtonPress();
+            }
+
+            return NavigationServices.goBack();
+          }}
           style={styles.leftButton}>
           <AntDesign name="left" style={[GlobalStyles.size20]} />
         </TouchableOpacity>

@@ -1,12 +1,13 @@
 import React, {useContext} from 'react';
 import {View, SafeAreaView} from 'react-native';
-import CHeader from '../../components/CHeader';
 
 // * Components
+import CHeader from '../../components/CHeader';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import FormChangePassword from '../../layout/Forms/FormChangePassword';
 
 // * Styles & Assets
+import NavigationServices from '../../routes/NavigationServices';
 import styles from './Styles/LoginStyle';
 import {UserContext} from '../../context/UserContext';
 import {ChangePasswordPayload} from '../../public/services/models/UserModels';
@@ -35,7 +36,10 @@ const ChangePasswordScreen = () => {
 
   return (
     <SafeAreaView style={styles.wrapper}>
-      <CHeader />
+      <CHeader
+        customLeft
+        onLeftButtonPress={() => NavigationServices.replace('Auth')}
+      />
 
       <KeyboardAwareScrollView style={styles.contentScrollView}>
         <View style={styles.contentWrapper}>
