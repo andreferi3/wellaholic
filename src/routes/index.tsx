@@ -17,7 +17,7 @@ import ChangePasswordScreen from '../screens/Auth/ChangePasswordScreen';
 export type RootStackRoutesProps = {
   AuthLoading: undefined;
   ChangePassword: {
-    email: string;
+    username: string;
     code: string;
   };
   Main: {

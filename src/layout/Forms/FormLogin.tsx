@@ -13,7 +13,7 @@ import GlobalStyles from '../../public/styles/GlobalStyles';
 // * Helper
 import {FormLoginSchema} from '../../public/constants/FormSchema';
 import NavigationServices from '../../routes/NavigationServices';
-import {buildLink, isError} from '../../public/helper/GlobalHelper';
+import {isError} from '../../public/helper/GlobalHelper';
 import {useFocusEffect} from '@react-navigation/core';
 
 export interface FormLoginProps {
@@ -44,12 +44,6 @@ const FormLogin = (props: FormLoginProps) => {
       return () => unsubscribe;
     }, []),
   );
-
-  const createLink = async () => {
-    const link = await buildLink();
-
-    console.log(link);
-  };
 
   return (
     <View>
@@ -84,13 +78,6 @@ const FormLogin = (props: FormLoginProps) => {
 
       <CButton isLoading={props.isLoading} onPress={formik.handleSubmit}>
         Login
-      </CButton>
-
-      <CButton
-        isLoading={props.isLoading}
-        onPress={createLink}
-        btnStyle={[GlobalStyles.mt3]}>
-        Create Dynamic Link
       </CButton>
     </View>
   );

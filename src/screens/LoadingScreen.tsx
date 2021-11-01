@@ -38,10 +38,12 @@ const LoadingScreen = () => {
             cidIndex - txt.length,
           );
 
+          console.log('utmSource', utmSource, sourceRes);
+
           source = utmSource?.split('%26');
 
           return NavigationServices.replace('ChangePassword', {
-            email: source[0],
+            username: source[0],
             code: source[1],
           });
         }

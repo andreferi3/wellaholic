@@ -20,18 +20,20 @@ type TValues = {
 };
 
 const ChangePasswordScreen = () => {
-  const {loading} = useContext(UserContext);
+  const {loading, changePassword} = useContext(UserContext);
 
   const route = useRoute<RouteProp<RootStackRoutesProps, 'ChangePassword'>>();
 
   const handleSubmit = (values: TValues) => {
     const payload: ChangePasswordPayload = {
       new_password: values.password,
-      email: route.params.email ?? '',
+      username: route.params.username ?? '',
       code: route.params.code ?? '',
     };
 
     console.log(payload);
+
+    changePassword(payload);
   };
 
   return (
