@@ -10,6 +10,9 @@ import {
 } from '../public/services/models/UserModels';
 import NavigationServices from '../routes/NavigationServices';
 
+import RNExitApp from 'react-native-exit-app';
+import {openInbox} from 'react-native-email-link';
+
 interface UserContextProps {
   children: ReactNode;
 }
@@ -103,9 +106,27 @@ const UserContextProvider = (props: UserContextProps) => {
       NavigationServices.navigate('EmailSent', {
         email: payload.email,
       });
+
+      setTimeout(() => {
+        openInbox({
+          message: 'Whatcha wanna do?',
+          cancelLabel: 'Go back!',
+        });
+        RNExitApp.exitApp();
+      }, 2000);
     } else {
       setLoading(false);
-      console.log('gagal sent email : ', response.data);
+      if (response.data.response.data.data.message) {
+        showMessage({
+          message: response.data.response.data.data.message,
+          type: 'danger',
+        });
+      } else {
+        showMessage({
+          message: `Unidentified Error : ${response.data.response.status}`,
+          type: 'danger',
+        });
+      }
     }
   };
 
@@ -119,6 +140,8 @@ const UserContextProvider = (props: UserContextProps) => {
           'Your password has been reseted. Please login back with your new password',
         type: 'success',
       });
+
+      NavigationServices.replace('Auth');
     } else {
       if (response.data.response.data.data.message) {
         showMessage({

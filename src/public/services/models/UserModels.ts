@@ -18,7 +18,7 @@ export interface RegisterPayload {
 }
 
 export interface ChangePasswordPayload {
-  username: string;
+  email: string;
   new_password: string;
   code: string;
 }

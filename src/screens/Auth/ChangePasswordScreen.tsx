@@ -27,7 +27,7 @@ const ChangePasswordScreen = () => {
   const handleSubmit = (values: TValues) => {
     const payload: ChangePasswordPayload = {
       new_password: values.password,
-      username: route.params.username ?? '',
+      email: route.params.email ?? '',
       code: route.params.code ?? '',
     };
 

@@ -51,7 +51,6 @@ const FormForgotPassword = (props: FormForgotPasswordProps) => {
         containerStyle={[GlobalStyles.mv5]}
         label="Email"
         placeholder="Input your email"
-        keyboardType="email-address"
         autoCapitalize="none"
         onChangeText={formik.handleChange('email')}
         error={formik.errors.email}
