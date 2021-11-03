@@ -102,7 +102,7 @@ export const forgetPassword = (payload: ForgetPasswordPayload) => {
  */
 export const changePassword = (payload: ChangePasswordPayload) => {
   return axios
-    .post(
+    .put(
       `?rest_route=/simple-jwt-login/v1/user/reset_password&email=${payload.email}&code=${payload.code}&new_password=${payload.new_password}&AUTH_KEY=THISISMySpeCiaLAUthCode`,
     )
     .then(res => okResponse(res))

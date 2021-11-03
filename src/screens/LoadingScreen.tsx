@@ -38,7 +38,7 @@ const LoadingScreen = () => {
             cidIndex - txt.length,
           );
 
-          source = utmSource?.split('%');
+          source = utmSource?.split('%26');
 
           return NavigationServices.replace('ChangePassword', {
             email: source[0],
@@ -50,7 +50,8 @@ const LoadingScreen = () => {
       if (dynamicLink?.url) {
         if (dynamicLink.utmParameters?.utm_campaign === 'change-password') {
           if (dynamicLink.utmParameters?.utm_source) {
-            source = dynamicLink.utmParameters.utm_source.split('>');
+            console.log(dynamicLink.utmParameters?.utm_source);
+            source = dynamicLink.utmParameters.utm_source.split('&');
             return NavigationServices.replace('ChangePassword', {
               email: source[0],
               code: source[1],

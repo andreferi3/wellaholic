@@ -10,9 +10,6 @@ import {
 } from '../public/services/models/UserModels';
 import NavigationServices from '../routes/NavigationServices';
 
-import RNExitApp from 'react-native-exit-app';
-import {openInbox} from 'react-native-email-link';
-
 interface UserContextProps {
   children: ReactNode;
 }
@@ -106,14 +103,6 @@ const UserContextProvider = (props: UserContextProps) => {
       NavigationServices.navigate('EmailSent', {
         email: payload.email,
       });
-
-      setTimeout(() => {
-        openInbox({
-          message: 'Whatcha wanna do?',
-          cancelLabel: 'Go back!',
-        });
-        RNExitApp.exitApp();
-      }, 2000);
     } else {
       setLoading(false);
       if (response.data.response.data.data.message) {

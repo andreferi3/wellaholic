@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {View, SafeAreaView, Image} from 'react-native';
 import CHeader from '../../components/CHeader';
 
@@ -15,9 +15,19 @@ import EStyleSheet from 'react-native-extended-stylesheet';
 import CButton from '../../components/CButton';
 import {RouteProp, useRoute} from '@react-navigation/core';
 import {AuthStackRoutesProps} from '../../routes';
+import {openInbox} from 'react-native-email-link';
 
 const EmailSentScreen = () => {
   const route = useRoute<RouteProp<AuthStackRoutesProps, 'EmailSent'>>();
+
+  useEffect(() => {
+    setTimeout(() => {
+      openInbox({
+        message: 'Whatcha wanna do?',
+        cancelLabel: 'Go back!',
+      });
+    }, 2000);
+  }, []);
 
   return (
     <SafeAreaView style={styles.wrapper}>
