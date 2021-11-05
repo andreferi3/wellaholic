@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 import React, {useEffect, useRef, useState} from 'react';
 import {
   View,
@@ -151,7 +152,7 @@ const HomeScreen = () => {
             onRefresh={onRefresh}
             tintColor="transparent"
             colors={['transparent']}
-            style={{backgroundColor: 'transparent'}}
+            style={GlobalStyles.bgTransparent}
           />
         }>
         <WebView

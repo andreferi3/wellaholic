@@ -622,6 +622,9 @@ const GlobalStyles = createStyles({
   h100: {
     height: '100%',
   },
+  bgTransparent: {
+    backgroundColor: 'transparent',
+  },
 });
 
 export default GlobalStyles;

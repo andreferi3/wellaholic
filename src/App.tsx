@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import 'react-native-gesture-handler';
 import React, {useEffect} from 'react';
-import {Linking} from 'react-native';
+import {Linking, StatusBar} from 'react-native';
 import AppContainer from './routes';
 
 // * Components
@@ -82,6 +82,7 @@ const App = () => {
 
   return (
     <UserContextProvider>
+      <StatusBar barStyle="dark-content" />
       <AppContainer />
       <FlashMessage position="top" />
     </UserContextProvider>
