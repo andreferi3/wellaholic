@@ -9,8 +9,8 @@ const styles = createStyles({
     left: '16rem',
   },
   logoImg: {
-    width: '140rem',
-    height: '40rem',
+    width: '80rem',
+    height: '80rem',
     resizeMode: 'contain',
   },
   carouselContainer: {
