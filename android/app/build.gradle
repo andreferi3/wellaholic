@@ -132,11 +132,11 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.tropika"
+        applicationId "com.wellaholic"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 4
-        versionName "1.2.1"
+        versionCode 5
+        versionName "1.2.2"
         multiDexEnabled true
     }
     splits {

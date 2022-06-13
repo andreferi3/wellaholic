@@ -37,6 +37,57 @@
             {
               "client_id": "171937294185-cgd4fh61t0lg6tbeh9kv7sdlmjmmrau2.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "171937294185-lpm2q0b2ubaca0uptuaqeod6vv8ifgoa.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.wellaholic"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:171937294185:android:435823fc05354d45633ff8",
+        "android_client_info": {
+          "package_name": "com.wellaholic"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "171937294185-96jc4pvonnfnfhtpt79416lh6ro74qov.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.wellaholic",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "171937294185-cgd4fh61t0lg6tbeh9kv7sdlmjmmrau2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBqGGqgF9FWr_eBRkQk_xzSbwRlcpsI1VM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "171937294185-cgd4fh61t0lg6tbeh9kv7sdlmjmmrau2.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "171937294185-lpm2q0b2ubaca0uptuaqeod6vv8ifgoa.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.wellaholic"
+              }
             }
           ]
         }

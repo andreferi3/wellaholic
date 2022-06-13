@@ -13,17 +13,17 @@ export function isError(formik: any, fieldName: string) {
 
 export async function buildLink() {
   const link = await dynamicLinks().buildLink({
-    link: 'https://tropika.on-dev.info',
-    domainUriPrefix: 'https://tropika.page.link',
+    link: 'https://app.wellaholic.com',
+    domainUriPrefix: 'https://wellaholic.page.link',
     analytics: {
       campaign: 'change-password',
       source: 'andreferi135@gmail.com&198932',
     },
     android: {
-      packageName: 'com.tropika',
+      packageName: 'com.wellaholic',
     },
     ios: {
-      bundleId: 'com.tropika',
+      bundleId: 'com.wellaholic',
     },
   });
 

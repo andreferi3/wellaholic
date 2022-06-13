@@ -1,4 +1,4 @@
-package com.tropika;
+package com.wellaholic;
 
 import android.os.Bundle;
 import com.facebook.react.ReactActivity;

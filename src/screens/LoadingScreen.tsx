@@ -27,7 +27,7 @@ const LoadingScreen = () => {
       const url = await Linking.getInitialURL();
       const screenIndex = url?.indexOf('utm_campaign=change-password');
 
-      // console.log('url', url);
+      console.log('url', url);
 
       if (screenIndex) {
         if (screenIndex > -1) {
@@ -36,15 +36,15 @@ const LoadingScreen = () => {
           // const sourceRes = url?.substring(sourceIndex);
           // const cidIndex = sourceRes?.indexOf('&cid') as number;
 
-          // console.log('hasil : ', url?.substring(sourceIndex + txt.length));
+          console.log('hasil : ', url?.substring(sourceIndex + txt.length));
 
           const utmSource = url?.substring(sourceIndex + txt.length);
 
-          // console.log('sourceRes', utmSource);
+          console.log('sourceRes', utmSource);
 
           source = utmSource?.split('%26');
 
-          // console.log('email ios ', source);
+          console.log('email ios ', source);
 
           return NavigationServices.replace('ChangePassword', {
             email: source[0],
@@ -75,7 +75,7 @@ const LoadingScreen = () => {
       if (response.ok) {
         if (response.data?.success) {
           return NavigationServices.replace('Main', {
-            url: 'https://tropika.on-dev.info/#',
+            url: 'https://app.wellaholic.com/',
             token: jwt,
           });
         } else {

@@ -4,7 +4,7 @@ import axios from 'axios';
 // * Services
 import * as userServices from './user';
 
-axios.defaults.baseURL = 'https://tropika.on-dev.info/';
+axios.defaults.baseURL = 'https://app.wellaholic.com/';
 
 axios.interceptors.request.use(
   async config => {
